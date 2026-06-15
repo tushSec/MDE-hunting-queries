@@ -1,0 +1,12 @@
+# Defender Tampering
+
+Identify Tampering Attempt
+
+```kusto
+DeviceEvents
+| where ActionType contains "Tampering"
+```
+
+## Use Case
+
+Helps identify software Tampering.
