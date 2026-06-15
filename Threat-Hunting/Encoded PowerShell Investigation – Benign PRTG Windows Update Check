@@ -1,1 +1,14 @@
+#Encoded PowerShel
 
+Encoded PowerShell Investigation – Benign PRTG Windows Update Check
+
+'''Kusto
+DeviceProcessEvents
+| where FileName in~ ("powershell.exe","pwsh.exe")
+| where ProcessCommandLine contains "-enc"
+    or ProcessCommandLine contains "-encodedcommand"
+| project Timestamp, DeviceName, InitiatingProcessAccountName, ProcessCommandLine
+| order by Timestamp desc
+
+## Use Case
+Benign PRTG Windows Update Check
